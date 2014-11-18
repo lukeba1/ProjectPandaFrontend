@@ -1,23 +1,38 @@
 angular.module('TabsApp', [])
     .controller('TabsCtrl', ['$scope', function ($scope) {
         $scope.tabs = [{
-            title: 'One',
+            title: 'Description',
             url: 'one.tpl.html'
         }, {
-            title: 'Two',
+            title: 'Data',
             url: 'two.tpl.html'
-        }, {
-            title: 'Three',
-            url: 'three.tpl.html'
+
         }];
+        $scope.credentials = [{
+            "username": "Benno",
+            "password": "Benno123"
+        }, {
+            "username": "Maria",
+            "password": "Maria123"
+        },{
+            "username": "Maria55",
+            "password": "Maria123"
+        }];
+
+        $scope.master ={};
+
+        $scope.update = function(user) {
+            $scope.master = angular.copy(user);
+        };
 
         $scope.currentTab = 'one.tpl.html';
 
         $scope.onClickTab = function (tab) {
             $scope.currentTab = tab.url;
-        }
+        };
 
-        $scope.isActiveTab = function(tabUrl) {
+        $scope.isActiveTab = function (tabUrl) {
             return tabUrl == $scope.currentTab;
         }
     }]);
+
